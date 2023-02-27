@@ -20,7 +20,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top">김팡현!</a>
+                <a class="navbar-brand" href="index.html">김팡현!</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     
                     <i class="fas fa-bars"></i>
@@ -125,7 +125,7 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- About Section Content-->
-                <div class="row" style="margin-left: 25%;">
+                <div class="row" style="margin-left: 15%;">
                     <h1>이요이 8급 문제</h1>
                         <p> 1. 이요이가 제일 조아하는 캐릭터는?</p>
                         <form name="form">
@@ -140,30 +140,31 @@
                         <input type="radio" name="two" id="two3" value="v3"><label for="two3">소곱창</label><br>
                         <input type="radio" name="two" id="two4" value="v4"><label for="two4">삼겹살</label><br>
                         <br><br>
-                        <p> 2. 이요이가 제일 조아하는 음식은?</p>
-                        <input type="radio" name="two" id="two1" value="v1"><label for="two1">볶음밥</label><br>
-                        <input type="radio" name="two" id="two2" value="v2"><label for="two2">슈슈버거</label><br>
-                        <input type="radio" name="two" id="two3" value="v3"><label for="two3">소곱창</label><br>
-                        <input type="radio" name="two" id="two4" value="v4"><label for="two4">삼겹살</label><br>
+                        <p> 3. 이요이가 제일 조아하는 사람은?</p>
+                        <input type="radio" name="three" id="three1" value="v1"><label for="three1">파카</label><br>
+                        <input type="radio" name="three" id="three2" value="v2"><label for="three2">랄로</label><br>
+                        <input type="radio" name="three" id="three3" value="v3"><label for="three3">괴물쥐</label><br>
+                        <input type="radio" name="three" id="three4" value="v4"><label for="three4">김팡현</label><br>
 
 
-                        <input type="button" name="선택" value="정답확인" onclick="myFucntion()">
-                        </form>
+                        <input type="button" style="margin-top: 30px;" class="btn btn-xl btn-outline-light" name="선택" value="정답확인" onclick="myFucntion()">
                         <p id="check"></p>
+                        </form>
                         <script type="text/javascript">
                         function myFucntion() {
-                        if(form.kingName[2].checked==true && form.two[0].checked==true ) document.getElementById("check").innerHTML="정답입니다.";
-                        else document.getElementById("check").innerHTML="오답입니다.";
+                        if(form.kingName[2].checked==true && form.two[0].checked==true && form.three[3].checked==true ){
+                         //   document.getElementById("goNext").style.display = "";
+                            document.getElementById("check").innerHTML=" <a class='btn btn-xl btn-outline-light' style='float: right;margin-top: 30px;' href='./index_copy.html'>다음</a>";
+                                
+                            alert("정답입니다~!");
+                        }else{
+                            alert("오답 ㅡㅡ");
+                        }     
                         }
                         </script>
                 </div>
                 <!-- About Section Button-->
-                <div class="text-center mt-4">
-                    <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
-                        <i class="fas fa-download me-2"></i>
-                        Free Download!
-                    </a>
-                </div>
+              
             </div>
         </section>
         <!-- Contact Section-->
