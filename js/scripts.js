@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', event => {
     var dd =  document.body.querySelector('#modal1');
 
     dd.addEventListener('click', () => {
-            alert('땡!!');
+            alert('꽝!!!!');
     });
     
 
