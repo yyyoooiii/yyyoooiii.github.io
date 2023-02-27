@@ -22,7 +22,7 @@
             <div class="container">
                 <a class="navbar-brand" href="#page-top">김팡현!</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
+                    
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -125,9 +125,37 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- About Section Content-->
-                <div class="row">
-                    <div class="col-lg-4 ms-auto"><p class="lead"></p></div>
-                    <div class="col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+                <div class="row" style="margin-left: 25%;">
+                    <h1>이요이 8급 문제</h1>
+                        <p> 1. 이요이가 제일 조아하는 캐릭터는?</p>
+                        <form name="form">
+                        <input type="radio" name="kingName" id="yong1" value="v1"><label for="yong1">키티</label><br>
+                        <input type="radio" name="kingName" id="yong2" value="v2"><label for="yong2">폼폼푸딩</label><br>
+                        <input type="radio" name="kingName" id="yong3" value="v3"><label for="yong3">폼폼푸린</label><br>
+                        <input type="radio" name="kingName" id="yong4" value="v4"><label for="yong4">사스케</label><br>
+                        <br><br>
+                        <p> 2. 이요이가 제일 조아하는 음식은?</p>
+                        <input type="radio" name="two" id="two1" value="v1"><label for="two1">볶음밥</label><br>
+                        <input type="radio" name="two" id="two2" value="v2"><label for="two2">슈슈버거</label><br>
+                        <input type="radio" name="two" id="two3" value="v3"><label for="two3">소곱창</label><br>
+                        <input type="radio" name="two" id="two4" value="v4"><label for="two4">삼겹살</label><br>
+                        <br><br>
+                        <p> 2. 이요이가 제일 조아하는 음식은?</p>
+                        <input type="radio" name="two" id="two1" value="v1"><label for="two1">볶음밥</label><br>
+                        <input type="radio" name="two" id="two2" value="v2"><label for="two2">슈슈버거</label><br>
+                        <input type="radio" name="two" id="two3" value="v3"><label for="two3">소곱창</label><br>
+                        <input type="radio" name="two" id="two4" value="v4"><label for="two4">삼겹살</label><br>
+
+
+                        <input type="button" name="선택" value="정답확인" onclick="myFucntion()">
+                        </form>
+                        <p id="check"></p>
+                        <script type="text/javascript">
+                        function myFucntion() {
+                        if(form.kingName[2].checked==true && form.two[0].checked==true ) document.getElementById("check").innerHTML="정답입니다.";
+                        else document.getElementById("check").innerHTML="오답입니다.";
+                        }
+                        </script>
                 </div>
                 <!-- About Section Button-->
                 <div class="text-center mt-4">
@@ -415,8 +443,6 @@
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="assets/img/portfolio/akdrmf.png" alt="..." />
@@ -424,7 +450,7 @@
                                     <p class="mb-4">걍 꽝임니다. 사실 귀차나</p>
                                     <button class="btn btn-primary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
-                                        Close Window
+                                        닫기
                                     </button>
                                 </div>
                             </div>
