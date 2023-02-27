@@ -44,6 +44,21 @@ window.addEventListener('DOMContentLoaded', event => {
             alert('꽝!!!!');
     });
     
+    var dd2 =  document.body.querySelector('#modal2');
+
+    dd2.addEventListener('click', () => {
+            alert('꽝!!!!');
+    });
+    
+    
+    var dd4 =  document.body.querySelector('#modal6');
+
+    dd4.addEventListener('click', () => {
+            alert('꽝!!!!');
+    });
+    
+
+
 
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector('.navbar-toggler');
