@@ -42,9 +42,14 @@ function typingIntroTitle() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
+
+
+            
+    
 window.onload = function() {
     timer = setInterval(typingIntroTitle, 200);
    
+
 var pos = {
         drawable : false,
         x : -1,
@@ -66,6 +71,13 @@ var pos = {
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
  
+    var img =  document.getElementById('img');
+
+    img.addEventListener('click', download);
+    
+    function download(e){
+        e.target.href = canvas.toDataURL()
+    }
 
     canvas.addEventListener("mousedown", listener);
     canvas.addEventListener("mousemove", listener);
@@ -348,6 +360,10 @@ var pos = {
                             
                             <canvas id='canvas' width='300' height='300' style="border:1px solid black"></canvas>
                             </body>
+
+                            <a class="btn btn-xl btn-outline-primary" id="img" href="" download="pang_birthDay.png">다운로드</a>
+                            
+
                     </div>
                 </div>
             </div>
