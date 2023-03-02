@@ -113,6 +113,7 @@ var pos = {
         ctx.moveTo(pos.x, pos.y);
     }
     function touchStart(e){
+        document.body.style.overflow = "hidden"; 
         pos.drawable = true;
         ctx.beginPath();
         pos.x = e.touches[0].pageX - rect.left
@@ -126,12 +127,14 @@ var pos = {
         ctx.stroke();
     }
     function touch(e){
+       
         ctx.lineTo(e.touches[0].pageX - rect.left, e.touches[0].pageY - rect.top);
         pos.x = e.touches[0].pageX - rect.left;
-        pos.y = e.touches[0].pageY - rect.top;
+        pos.y = e.touches[0].pageY 
         ctx.stroke();
     }
     function drawEnd(){
+        document.body.style.overflow = "auto"; 
         pos.drawable = false;
         pos.x = -1;
         pos.y = -1;
@@ -312,11 +315,9 @@ var pos = {
         <section class="page-section" id="contact">
             <div class="container">
                 <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">갖고싶은 선물을 그려보세요~!</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Contact Section Form-->
