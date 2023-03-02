@@ -73,14 +73,14 @@ var pos = {
     canvas.addEventListener("mouseout", listener);
     
          //모바일 이벤트 등록
-    canvas.on("touchstart", mobileDraw);
-    canvas.on("touchend", mobileDraw);
-    canvas.on("touchcancel", mobileDraw);
-    canvas.on("touchmove", mobileDraw);
+    canvas.addEventListener("touchstart", mobileDraw);
+    canvas.addEventListener("touchend", mobileDraw);
+    canvas.addEventListener("touchcancel", mobileDraw);
+    canvas.addEventListener("touchmove", mobileDraw);
+
 
     
-       /* [모바일 그리기 이벤트 처리] */
-    function mobileDraw(evt){
+         function mobileDraw(evt){
           console.log("");
           console.log("[mobileDraw] : [start]");
           console.log("");
@@ -106,7 +106,7 @@ var pos = {
 
             case "touchend" :
             case "touchcancel" : {
-               BodyScrollDisAble(); //body 스크롤 허용
+                BodyScrollAble(); //body 스크롤 허용
                drawble = false;
                ctx.closePath();
             }
@@ -114,7 +114,33 @@ var pos = {
          }
        };
 
-    
+       function getMobilePosition(evt){
+
+        var x = evt.touches[0].pageX
+        var y = evt.touches[0].pageY
+          return {X:x, Y:y};
+       }; 
+
+
+       
+       /* [body 영역 스크롤 관리 부분] */
+       function BodyScrollDisAble(){
+          console.log("");
+          console.log("[BodyScrollDisAble] : [start]");
+          console.log("");         
+
+          document.body.style.overflow = "hidden"; //스크롤 막음
+       };
+       function BodyScrollAble(){  
+          console.log("");
+          console.log("[BodyScrollAble] : [start]");
+          console.log("");        
+
+          document.body.style.overflow = "auto"; //스크롤 허용
+       };
+
+
+      
     function listener(e){
         switch(e.type){
             case "mousedown":
@@ -151,10 +177,11 @@ var pos = {
         ctx.moveTo(pos.x, pos.y);
     }
     function touchStart(e){
+        e.preventDefault();
         pos.drawable = true;
         ctx.beginPath();
-        pos.x = e.touches[0].pageX - rect.left
-        pos.y = e.touches[0].pageY - rect.top
+        pos.x = e.touches[0].pageX
+        pos.y = e.touches[0].pageY
         ctx.moveTo(pos.x, pos.y);
     }
     function draw(e){
@@ -164,9 +191,10 @@ var pos = {
         ctx.stroke();
     }
     function touch(e){
-        ctx.lineTo(e.touches[0].pageX - rect.left, e.touches[0].pageY - rect.top);
-        pos.x = e.touches[0].pageX - rect.left;
-        pos.y = e.touches[0].pageY - rect.top;
+        e.preventDefault();
+        ctx.lineTo(e.touches[0].pageX, e.touches[0].pageY );
+        pos.x = e.touches[0].pageX 
+        pos.y = e.touches[0].pageY
         ctx.stroke();
     }
     function drawEnd(){
