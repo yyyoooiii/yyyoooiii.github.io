@@ -72,75 +72,11 @@ var pos = {
     canvas.addEventListener("mouseup", listener);
     canvas.addEventListener("mouseout", listener);
     
-         //모바일 이벤트 등록
-    canvas.addEventListener("touchstart", mobileDraw);
-    canvas.addEventListener("touchend", mobileDraw);
-    canvas.addEventListener("touchcancel", mobileDraw);
-    canvas.addEventListener("touchmove", mobileDraw);
-
-
+    /// 터치 스크린
+    canvas.addEventListener("touchstart", listener);
+    canvas.addEventListener("touchmove", listener);
+    canvas.addEventListener("touchend", listener);
     
-         function mobileDraw(evt){
-          console.log("");
-          console.log("[mobileDraw] : [start]");
-          console.log("");
-
-          switch(evt.type){
-            case "touchstart" : {
-               BodyScrollDisAble(); //body 스크롤 정지
-               drawble = true;
-               ctx.beginPath();
-               ctx.moveTo(getMobilePosition(evt).X, getMobilePosition(evt).Y);
-            }
-            break;
-
-            case "touchmove" : {
-               if(drawble){
-                  // 스크롤 및 이동 이벤트 중지
-                  evt.preventDefault();
-                  ctx.lineTo(getMobilePosition(evt).X, getMobilePosition(evt).Y);
-                  ctx.stroke();
-               }
-            }
-            break;
-
-            case "touchend" :
-            case "touchcancel" : {
-                BodyScrollAble(); //body 스크롤 허용
-               drawble = false;
-               ctx.closePath();
-            }
-            break;
-         }
-       };
-
-       function getMobilePosition(evt){
-
-        var x = evt.touches[0].pageX
-        var y = evt.touches[0].pageY
-          return {X:x, Y:y};
-       }; 
-
-
-       
-       /* [body 영역 스크롤 관리 부분] */
-       function BodyScrollDisAble(){
-          console.log("");
-          console.log("[BodyScrollDisAble] : [start]");
-          console.log("");         
-
-          document.body.style.overflow = "hidden"; //스크롤 막음
-       };
-       function BodyScrollAble(){  
-          console.log("");
-          console.log("[BodyScrollAble] : [start]");
-          console.log("");        
-
-          document.body.style.overflow = "auto"; //스크롤 허용
-       };
-
-
-      
     function listener(e){
         switch(e.type){
             case "mousedown":
@@ -177,11 +113,10 @@ var pos = {
         ctx.moveTo(pos.x, pos.y);
     }
     function touchStart(e){
-        e.preventDefault();
         pos.drawable = true;
         ctx.beginPath();
-        pos.x = e.touches[0].pageX
-        pos.y = e.touches[0].pageY
+        pos.x = e.touches[0].pageX - rect.left
+        pos.y = e.touches[0].pageY - rect.top
         ctx.moveTo(pos.x, pos.y);
     }
     function draw(e){
@@ -191,10 +126,9 @@ var pos = {
         ctx.stroke();
     }
     function touch(e){
-        e.preventDefault();
-        ctx.lineTo(e.touches[0].pageX, e.touches[0].pageY );
-        pos.x = e.touches[0].pageX 
-        pos.y = e.touches[0].pageY
+        ctx.lineTo(e.touches[0].pageX - rect.left, e.touches[0].pageY - rect.top);
+        pos.x = e.touches[0].pageX - rect.left;
+        pos.y = e.touches[0].pageY - rect.top;
         ctx.stroke();
     }
     function drawEnd(){
@@ -400,8 +334,7 @@ var pos = {
                                 <button onclick="colorChange('skyblue')" style="background-color: skyblue; width: 30px; height: 30px; border: solid 1px;"></button>
                                 <button onclick="colorChange('violet')" style="background-color: violet; width: 30px; height: 30px; border: solid 1px;"></button>
                                 <button onclick="colorChange('lime')" style="background-color: lime; width: 30px; height: 30px; border: solid 1px;"></button>
-                               <br>
-                               <button  style="    width: 100px;
+                                <button  style="    width: 100px;
                                 font-size: 15px;
                                 font-weight: bold;
                                 padding: 10px;" class="btn btn-xl btn-outline-primary" onclick="colorChange('white')">지우개</button>
@@ -411,7 +344,7 @@ var pos = {
                                 padding: 10px;" class="btn btn-xl btn-outline-primary"  onclick="clearAll()">전체지우기</button>
                             </div>
                             
-                            <canvas id='canvas' width='300' height='300' style="border:1px solid black"></canvas>
+                            <canvas id='canvas' width='500' height='500' style="border:1px solid black"></canvas>
                             </body>
                     </div>
                 </div>
