@@ -121,6 +121,7 @@ var pos = {
         ctx.moveTo(pos.x, pos.y);
     }
     function draw(e){
+        document.body.style.overflow = "hidden"; 
         ctx.lineTo(e.offsetX, e.offsetY);
         pos.x = e.offsetX;
         pos.y = e.offsetY;
