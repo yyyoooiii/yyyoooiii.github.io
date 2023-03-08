@@ -447,10 +447,10 @@ var pos = {
                              //emailjs.send('service ID', 'template ID', 보낼 내용이 담긴 객체)
                                      .then(function(response) {
                                         console.log('SUCCESS!', response.status, response.text);
-                                        alert('확인되었습니다!');
+                                        swal('', "확인되었습니다!", "success" );
                                      }, function(error) {
                                         console.log('FAILED...', error);
-                                        alert('전송 실패!');
+                                        swal('', "전송 실패!", "error" );
                                      });
                                         
                     
