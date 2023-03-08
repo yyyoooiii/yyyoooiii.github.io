@@ -40,20 +40,20 @@ window.addEventListener('DOMContentLoaded', event => {
     var dd =  document.body.querySelector('#modal1');
 
     dd.addEventListener('click', () => {
-            alert('꽝!!!!');
+        swal('', "꽝!!!!", "error" );
     });
     
     var dd2 =  document.body.querySelector('#modal2');
 
     dd2.addEventListener('click', () => {
-            alert('꽝!!!!');
+        swal('', "꽝!!!!", "error" );
     });
     
     
     var dd4 =  document.body.querySelector('#modal6');
 
     dd4.addEventListener('click', () => {
-            alert('꽝!!!!');
+        swal('', "꽝!!!!", "error" );
     });
     
 
