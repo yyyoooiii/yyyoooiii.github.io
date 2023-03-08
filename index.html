@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
+  integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>
+  <script>
+   Kakao.init('f8c5c5f8f37bb03871a6e4a5b3e7a8f1');// 사용하려는 앱의 JavaScript 키 입력
+  </script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 <script>
 
 // 타이틀 문구 타이핑
@@ -6,6 +14,8 @@ const title = "HAPPY BIRTHDAY PANG!!! 😎😎";
 
 let cnt = 0;
 let timer = 0;
+
+
 
 function typingIntroTitle() {
     let character = title[cnt++];
@@ -42,13 +52,63 @@ function typingIntroTitle() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
+    function sendLink() {
+      
+  }
+  
 
+  // 카카오톡 링크 생성
+  function kakaoLink()
+  {
+        alert('1');
+
+        Kakao.API.request({
+      url: '/v2/api/talk/memo/default/send',
+      data: {
+        template_object: {
+          object_type: 'feed',
+          content: {
+            title: '딸기 치즈 케익',
+            description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+            image_url:
+              'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+            link: {
+              // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+              web_url: 'https://yyyoooiii.github.io',
+            },
+          },
+          social: {
+            like_count: 286,
+            comment_count: 45,
+            shared_count: 845,
+          },
+          buttons: [
+            {
+              title: '웹으로 보기',
+              link: {
+                web_url: 'https://yyyoooiii.github.io',
+              },
+            },
+          ],
+        },
+      },
+    })
+      .then(function(res) {
+        alert('success: ' + JSON.stringify(res));
+      })
+      .catch(function(err) {
+        alert('error: ' + JSON.stringify(err));
+      });
+
+    }
+
+ 
 
             
     
 window.onload = function() {
     timer = setInterval(typingIntroTitle, 200);
-   
+
 
 var pos = {
         drawable : false,
@@ -59,10 +119,14 @@ var pos = {
     var ctx = canvas.getContext('2d');
     var rect = canvas.getBoundingClientRect();  // 터치 스크린
 
+    
+    ctx.lineWidth = 7;
+
 // 전체 지우기
     function clearAll(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
+
  
 // 스타일 추가
     input.oninput = function(){
@@ -78,6 +142,7 @@ var pos = {
     function download(e){
         e.target.href = canvas.toDataURL()
     }
+
 
     canvas.addEventListener("mousedown", listener);
     canvas.addEventListener("mousemove", listener);
@@ -204,7 +269,28 @@ var pos = {
                      <div class="divider-custom-line"></div>
                      와!!!!!!
                     <div class="divider-custom-line"></div>
-                    
+                    <a id="kakaotalk-sharing-btn" href="javascript:;">
+                        <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
+                        alt="카카오톡 공유 보내기 버튼" />
+                    </a>
+
+                    <div class="kakao-link">
+                        <a id="kakao-link-btn" onclick="kakaoLink()">
+                        카카오톡으로 공유하기
+                        </a>
+                      </div>
+
+                      <script>
+                        Kakao.Share.createCustomButton({
+                          container: '#kakaotalk-sharing-btn',
+                          templateId: 82775,
+                          templateArgs: {
+                            title: '라이언이 즐겨먹던 바로 그 틴케이스 치즈볼',
+                            description: '바라만 봐도 즐거워지는 힐링 패키지에는 시크릿 스토리가 숨어있어요.',
+                          },
+                        });
+                      </script>
+
                 </div> 
                 
                 <!-- Masthead Subheading-->
@@ -313,10 +399,10 @@ var pos = {
                          //   document.getElementById("goNext").style.display = "";
                           //  document.getElementById("check").innerHTML=" <a class='btn btn-xl btn-outline-light' style='float: right;margin-top: 30px;' href='./index_copy.html'>다음</a>";
                                 
-                            alert("정답입니다~!");
+                          swal('', "정답입니다~!", "success" );
                         }else{
-                            alert("오답 ㅡㅡ");
-                        }     
+                            swal('', "오답~!", "error" );
+                         }     
                         }
                         </script>
                 </div>
@@ -338,7 +424,7 @@ var pos = {
                     <div class="col-lg-8 col-xl-7">
                         <body>
                             <div>
-                                <input id="input" type="hidden" min="0" max="100" value="10"></input>
+                                <input id="input" type="hidden" min="10" max="100" value="30"></input>
                                 <button onclick="colorChange('black')" style="background-color: black; width: 30px; height: 30px; border: solid 1px;"></button>
                                 <button onclick="colorChange('blue')" style="background-color: rgb(65, 153, 255); width: 30px; height: 30px; border: solid 1px;"></button>
                                 <button onclick='colorChange("red")' style="background-color: rgb(253, 73, 73); width: 30px; height: 30px; border: solid 1px;"></button>
@@ -358,10 +444,15 @@ var pos = {
                                 padding: 10px;" class="btn btn-xl btn-outline-primary"  onclick="clearAll()">전체지우기</button>
                             </div>
                             
-                            <canvas id='canvas' width='300' height='300' style="border:1px solid black"></canvas>
+                            <canvas id='canvas' width='300' height='300' style="border:3px solid black"></canvas>
                             </body>
 
-                            <a class="btn btn-xl btn-outline-primary" id="img" href="" download="pang_birthDay.png">다운로드</a>
+                            <a class="btn btn-xl btn-outline-primary" style="    width: 100px;
+                            font-size: 15px;
+                            font-weight: bold;
+                            padding: 10px;" id="img" href="" download="pang_birthDay.png">다운로드</a>
+                            <br>
+                            저장 후 이요이에게 카톡으로 전달하시오!
                             
 
                     </div>
